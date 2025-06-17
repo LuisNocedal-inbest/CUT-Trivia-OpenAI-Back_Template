@@ -8,6 +8,7 @@ dotenv.config()
 import { PORT } from './helpers/constants';
 
 import userRouter from './routes/user.routes';
+import chatyRouter from './routes/chaty.routes';
 
 class Server {
 
@@ -20,6 +21,7 @@ class Server {
         this.port = PORT;
         this.apiPaths = {
             user: '/user/',
+            chaty: '/chaty/',
         }
 
         this.initSwagger();
@@ -41,6 +43,7 @@ class Server {
 
     private routes() {
         this.app.use(this.apiPaths.user, userRouter);
+        this.app.use(this.apiPaths.chaty, chatyRouter);
     }
 
     private initSwagger() {

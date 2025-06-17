@@ -1,0 +1,22 @@
+service: cut-trivia-nocedal
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-west-1
+  stage: prod
+  timeout: 30
+  tags:
+    project: cut-trivia
+    owner: Luis Nocedal
+    env: prod
+
+functions:
+  app:
+    handler: dist/app.handler
+    events:
+      - httpApi: "*"
+
+package:
+  individually: true
+  excludeDevDependencies: true
